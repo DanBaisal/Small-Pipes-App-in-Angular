@@ -1,4 +1,89 @@
-<div>
-  <label>Payee Name</label>
-  <input (input)="onNameChange($event.target.value)">
+<div class="container">
+  <h3>Payment Form</h3>
+
+  <div class="row">
+    <div class="form-group col">
+      <label>Payee Name</label>
+      <input class="form-control" (input)="onNameChange($event.target.value)">
+    </div>
+  
+  <div class="col">
+    <label><b>Name</b></label>
+    <div>
+      {{ name | titlecase }}
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="container">
+<div class="row">
+  <div class="form-group col">
+    <label>Payment Date</label>
+    <input type="date" class="form-control" (input)="onDateChange($event.target.value)">
+  </div>
+
+<div class="col">
+  <label><b>Payment Date</b></label>
+  <div>
+    {{ date | date: 'MMMM d, y' }}
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="form-group col">
+      <label>Payment Amount</label>
+      <input class="form-control" (input)="onAmountChange($event.target.value)">
+    </div>
+  
+  <div class="col">
+    <label><b>Payment Amount</b></label>
+    <div>
+      {{ amount | currency: 'EUR' }}
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="form-group col">
+        <label>Height</label>
+        <input class="form-control" (input)="onHeightChange($event.target.value)">
+      </div>
+    
+    <div class="col">
+      <label><b>Height</b></label>
+      <div>
+        {{ height | number: '1.0-0' }}
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="form-group col">
+          <label>Miles</label>
+          <input class="form-control" (input)="onMilesChange($event.target.value)">
+        </div>
+      
+      <div class="col">
+        <label><b>Kilometres</b></label>
+        <div>
+          {{ miles | convert: 'm' }}
+          </div>
+        </div>
+      </div>
+      </div>
+
+    {{ car | json }}
+
+
+<!-- | (called pipe) lets us print the name in upper case, for example -->
+<!-- You can pass arguments to the pipe by adding : to the pipe and then the argument, like d for example -->
+<!-- You can use a pipe inside of ngIf, f.e. Here we only want to output the conversion if the result > 10 kms. -->
+<!-- You can use several pipes together by adding a | -->
